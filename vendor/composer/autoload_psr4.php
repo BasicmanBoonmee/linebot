@@ -7,4 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'LINE\\' => array($vendorDir . '/linecorp/line-bot-sdk/src'),
+    'Ixudra\\Curl\\' => array($vendorDir . '/ixudra/curl/src'),
+    'Illuminate\\Support\\' => array($vendorDir . '/illuminate/support'),
+    'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
 );
