@@ -9,7 +9,8 @@
 
     $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 
-    $response = $bot->replyMessage('nHuyWiB7yP5Zw52FIkcQobQuGDXCTA', $textMessageBuilder);
+    //$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
+    $response = $bot->pushMessage("basicmaninline",$textMessageBuilder);
     if ($response->isSucceeded()) {
         echo 'Succeeded!';
         return;
