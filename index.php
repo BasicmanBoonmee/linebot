@@ -15,7 +15,7 @@
 
     if (!is_null($events['events'])) {
         foreach ($events['events'] as $event) {
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($event['message']);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(print_r($event,true));
             $response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
         }
     }
