@@ -15,9 +15,9 @@
 
     if (!is_null($events['events'])) {
         foreach ($events['events'] as $event) {
-            if(strpos($event['message']['text'],"ทดสอบ") === true){
+            if(strpos($event['message']['text'],"ทดสอบ") !== true){
                 $text = "ทดสอบอะไรวะ";
-            }elseif(strpos($event['message']['text'],"งง") === true){
+            }elseif(strpos($event['message']['text'],"งง") !== true){
                 $text = "งงด้วย";
             }else{
                 $text = "ไม่มีอะไร";
