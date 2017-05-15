@@ -10,7 +10,7 @@
     $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 
     //$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
-    $response = $bot->pushMessage("basicmaninline",$textMessageBuilder);
+    $response = $bot->pushMessage("@jpz2894z",$textMessageBuilder);
     if ($response->isSucceeded()) {
         echo 'Succeeded!';
         return;
