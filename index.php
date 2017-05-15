@@ -15,7 +15,14 @@
 
     if (!is_null($events['events'])) {
         foreach ($events['events'] as $event) {
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(print_r($event,true));
+            if(strpos($event['message']['text'],"ทดสอบ") === true){
+                $text = "ทดสอบอะไรวะ";
+            }elseif(strpos($event['message']['text'],"งง") === true){
+                $text = "งงด้วย";
+            }else{
+                $text = "ไม่มีอะไร";
+            }
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
             $response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
         }
     }
