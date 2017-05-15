@@ -4,11 +4,13 @@
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'be68d4c33c85989848aca09ea9acb875']);
 		
 		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-		$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
+		$response = $bot->replyMessage('test', $textMessageBuilder);
 		if ($response->isSucceeded()) {
 			echo 'Succeeded!';
 			return;
 		}
+
+		echo "<p>Test1</p>";
 		
 		// Failed
 		echo $response->getHTTPStatus . ' ' . $response->getRawBody();
