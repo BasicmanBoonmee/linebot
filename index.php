@@ -26,7 +26,7 @@
             }
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
             $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-            $bot->pushMessage($event['source']['userId'],$textMessageBuilder);
+            //$bot->pushMessage($event['source']['userId'],$textMessageBuilder);
         }
     }
 
