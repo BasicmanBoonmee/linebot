@@ -1,11 +1,28 @@
 <?php
 	require_once __DIR__ . '/vendor/autoload.php';
 
-    /*$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('qHrTqVT/bSCXzWZxEoJKN3M/L3AFcc22bG/Nksp3GpJNJCqWJi8p8Z2XMmrgjoFEb97JF7R5kSAAprv7K4KGPyIRnsT/hJPdIvyBcOMHN6mw2fHr/45UCWB/HiR72oJst79wfFnoU9bg7nb+kSaGagdB04t89/1O/w1cDnyilFU=');
+    $access_token = 'qHrTqVT/bSCXzWZxEoJKN3M/L3AFcc22bG/Nksp3GpJNJCqWJi8p8Z2XMmrgjoFEb97JF7R5kSAAprv7K4KGPyIRnsT/hJPdIvyBcOMHN6mw2fHr/45UCWB/HiR72oJst79wfFnoU9bg7nb+kSaGagdB04t89/1O/w1cDnyilFU=';
+
+    $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+    $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 
     $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'be68d4c33c85989848aca09ea9acb875']);
 
-    $bot->parseEventRequest("Test","X-Line-Signature");
+    $content = file_get_contents('php://input');
+    // Parse JSON
+    $events = json_decode($content, true);
+
+    if (!is_null($events['events'])) {
+        foreach ($events['events'] as $event) {
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+            $response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+        }
+    }
+
+    /*$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+
+    $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'be68d4c33c85989848aca09ea9acb875']);
 
     echo "TEST";
     $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
@@ -20,10 +37,10 @@
     // Failed
     //echo $response->getHTTPStatus . ' ' . $response->getRawBody();
 
-$access_token = 'qHrTqVT/bSCXzWZxEoJKN3M/L3AFcc22bG/Nksp3GpJNJCqWJi8p8Z2XMmrgjoFEb97JF7R5kSAAprv7K4KGPyIRnsT/hJPdIvyBcOMHN6mw2fHr/45UCWB/HiR72oJst79wfFnoU9bg7nb+kSaGagdB04t89/1O/w1cDnyilFU=';
+
 
 // Get POST body content
-$content = file_get_contents('php://input');
+/*$content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
@@ -65,6 +82,6 @@ if (!is_null($events['events'])) {
         }
     }
 }
-echo "OK";
+echo "OK";*/
 
 ?>
