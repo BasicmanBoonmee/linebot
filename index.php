@@ -5,10 +5,25 @@
 
     $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('qHrTqVT/bSCXzWZxEoJKN3M/L3AFcc22bG/Nksp3GpJNJCqWJi8p8Z2XMmrgjoFEb97JF7R5kSAAprv7K4KGPyIRnsT/hJPdIvyBcOMHN6mw2fHr/45UCWB/HiR72oJst79wfFnoU9bg7nb+kSaGagdB04t89/1O/w1cDnyilFU=');
 
-    echo "httpClient : ".$httpClient;
     $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'be68d4c33c85989848aca09ea9acb875']);
 
-    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+    $events = $bot->parseEventRequest();
+
+    foreach ($events as $event){
+        //$event->getReplyToken();
+
+        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+        echo "TEST : ".print_r($textMessageBuilder->buildMessage(),true);
+        $response = $bot->replyMessage($event->getReplyToken(), $textMessageBuilder);
+        if ($response->isSucceeded()) {
+            echo 'Succeeded!';
+            return;
+        }
+
+        echo $response->getHTTPStatus . ' ' . $response->getRawBody();
+    }
+
+    /*$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
     echo "TEST : ".print_r($textMessageBuilder->buildMessage(),true);
     $response = $bot->replyMessage('<reply token>', $textMessageBuilder);
     if ($response->isSucceeded()) {
@@ -17,5 +32,5 @@
     }
     
     // Failed
-    echo $response->getHTTPStatus . ' ' . $response->getRawBody();
+    echo $response->getHTTPStatus . ' ' . $response->getRawBody();*/
 ?>
