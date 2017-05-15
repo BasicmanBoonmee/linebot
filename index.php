@@ -9,8 +9,6 @@
 
     $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 
-    $bot->parseEventRequest()
-
     $response = $bot->replyMessage('nHuyWiB7yP5Zw52FIkcQobQuGDXCTA', $textMessageBuilder);
     if ($response->isSucceeded()) {
         echo 'Succeeded!';
