@@ -19,6 +19,8 @@
                 $text = "ทดสอบอะไรวะ";
             }elseif(strpos($event['message']['text'],"งง") !== true){
                 $text = "งงด้วย";
+            }elseif(strpos($event['message']['text'],"test") !== true){
+                $text = "test อะไร ว้า";
             }else{
                 $text = "ไม่มีอะไร";
             }
