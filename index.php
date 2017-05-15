@@ -7,7 +7,7 @@
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'be68d4c33c85989848aca09ea9acb875']);
 
     $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-    echo "TEST : ".$textMessageBuilder->buildMessage();
+    echo "TEST : ".print_r($textMessageBuilder->buildMessage(),true);
     $response = $bot->replyMessage('<reply token>', $textMessageBuilder);
     if ($response->isSucceeded()) {
         echo 'Succeeded!';
