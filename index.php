@@ -15,11 +15,11 @@
 
     if (!is_null($events['events'])) {
         foreach ($events['events'] as $event) {
-            if(strpos($event['message']['text'],"ทดสอบ") !== true){
+            if(strpos($event['message']['text'],"ทดสอบ") !== false){
                 $text = "ทดสอบอะไรวะ";
-            }elseif(strpos($event['message']['text'],"งง") !== true){
+            }elseif(strpos($event['message']['text'],"งง") !== false){
                 $text = "งงด้วย";
-            }elseif(strpos($event['message']['text'],"test") !== true){
+            }elseif(strpos($event['message']['text'],"test") !== false){
                 $text = "test อะไร ว้า";
             }else{
                 $text = "ไม่มีอะไร";
